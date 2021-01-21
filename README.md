@@ -1,2 +1,2 @@
 # LoginApp
-A simple web component for login facility using servlet and jsp.<br>
+A simple web component for login functionality using servlet and jsp.<br>
