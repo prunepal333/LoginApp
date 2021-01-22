@@ -2,6 +2,9 @@
     pageEncoding="UTF-8" %>
  
 <%@ page import="io.sadish.web.dto.User" %>
+<%@ page import="java.io.FileInputStream" %>
+<%@ page import="java.io.FileOutputStream" %>
+
 
 <%
 	User user = (User)session.getAttribute("user");
@@ -25,8 +28,22 @@
 		<h4>
 			<%=user.getFirstName() %> <%=user.getLastName() %>
 		</h4>
+<%-- 		<%  --%>
+// 			FileInputStream fin = user.getProfilePicture();
+// 			String fileName = "file_" + Math.abs(new java.util.Random().nextInt()) + ".jpg";
+// 			FileOutputStream fout = new FileOutputStream(fileName);
+// 			int b;
+// 			while((b = fin.read()) != -1)
+// 			{
+// 				fout.write((byte)b);
+// 			}
+// 			fin.close();
+// 			fout.close();
+<%-- 		%> --%>
+		<p><img src="<%= user.getProfilePictureName() %>" alt="" />
 		<p><%=user.getProfileInfo() %></p>
 	</div>
+	<div><a href="update_profile.jsp">Update Profile</a></div>
 	<div class="logout"><a href="LogoutServlet">Logout</a></div>
 </body>
 </html>

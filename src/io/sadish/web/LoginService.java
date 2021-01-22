@@ -1,30 +1,15 @@
 package io.sadish.web;
 
-import java.sql.*;
-import io.sadish.web.dto.User;
-import com.mysql.jdbc.Driver;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-@SuppressWarnings("unused")
-public class LoginService {
-	Connection conn;
+import io.sadish.web.dto.User;
+
+public class LoginService extends FormService
+{
+	public LoginService() {super();}
 	
-	public static LoginService loginService = null;
-	public LoginService()
-	{
-		//initiates the database connection from here.
-		try {
-			this.conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sample_db_for_myapp", "root", "");
-		}catch(Exception ex)
-		{
-			System.err.println("Ex: " + ex.getMessage());
-		}
-	}
-	public static LoginService getInstance()
-	{
-		if(loginService == null)
-			return new LoginService();
-		return loginService;
-	}
 	public User getUserDetails(String username)
 	{
 		try {
